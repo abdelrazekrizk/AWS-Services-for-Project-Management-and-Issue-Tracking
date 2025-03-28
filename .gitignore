@@ -5,6 +5,8 @@ tmp/*
 # User-specific files
 temp/*
 
+# drawio.io Backup files
+*.drawio.bak
 
 ##
 # Prerequisites
