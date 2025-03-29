@@ -6,7 +6,7 @@ tmp/*
 temp/*
 
 # drawio.io Backup files
-*.drawio.bak
+*.drawio.bkp
 
 ##
 # Prerequisites
