@@ -1,5 +1,8 @@
 # AWS Services for Project Management and Issue Tracking
 
+## Introduction
+This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, and Amazon Cognito for a project management and issue tracking application.
+
 ## Objective
 Create a scalable project management and issue tracking application using AWS services, allowing users to create, update, and manage tasks efficiently while providing features such as user authentication, file storage, and notifications.
 
@@ -14,7 +17,10 @@ Create a scalable project management and issue tracking application using AWS se
 - **Reporting**: Generate reports on task progress, time spent, and team performance.
 - **Notifications**: Send alerts for task updates, deadlines, and comments.
 
-## Set Up the Basic Infrastructure
+### Architecture Components
+
+![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.drawio.png)
+
 
 **AWS Services**
 leverage the following AWS services to build a robust project management and issue tracking system:
@@ -26,10 +32,6 @@ leverage the following AWS services to build a robust project management and iss
 - **Amazon Cognito**: Implement user authentication and authorization using Amazon Cognito. This will help manage user accounts and permissions.
 - **Amazon SNS**: Use Simple Notification Service (SNS) for sending notifications about task updates, deadlines, or comments.
 - **Amazon CloudWatch**: Monitor application performance and set up alarms for any issues that arise.
-
-### Architecture Components
-
-![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.drawio.png)
 
 ## Set Up the Basic Infrastructure
 
@@ -45,7 +47,6 @@ leverage the following AWS services to build a robust project management and iss
    - Set up an API Gateway to expose endpoints for the Lambda functions.
 6. **Set Up Amazon Cognito (for user authentication)**:
    - Create a Cognito User Pool for managing user sign-ups and logins.
-
 
 
 #### Create an AWS Account
@@ -85,10 +86,6 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 - **Add Function Code**: Write the logic code for the Lambda function.
 to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/CreateTask.js)
 
-# AWS Services for Project Management and Issue Tracking
-
-## Introduction
-This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, and Amazon Cognito for a project management and issue tracking application.
 
 ## Set Up AWS Lambda
 
