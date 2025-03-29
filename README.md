@@ -17,7 +17,7 @@ Create a scalable project management and issue tracking application using AWS se
 ## Set Up the Basic Infrastructure
 
 **AWS Services**
-You can leverage the following AWS services to build a robust project management and issue tracking system:
+leverage the following AWS services to build a robust project management and issue tracking system:
 
 - **Amazon DynamoDB**: Use it as your primary database to store tasks, user stories, and project information. Its flexible schema allows you to adapt as your needs change.
 - **AWS Lambda**: Implement serverless functions to handle business logic for creating, updating, and retrieving tasks. This allows you to scale easily without managing servers.
@@ -26,9 +26,6 @@ You can leverage the following AWS services to build a robust project management
 - **Amazon Cognito**: Implement user authentication and authorization using Amazon Cognito. This will help manage user accounts and permissions.
 - **Amazon SNS**: Use Simple Notification Service (SNS) for sending notifications about task updates, deadlines, or comments.
 - **Amazon CloudWatch**: Monitor application performance and set up alarms for any issues that arise.
-
-## Frontend Application
-The frontend application will be the user interface built using a framework like React, Angular, or Vue.js. It will interact with the backend via RESTful APIs.
 
 ### Architecture Components
 
@@ -107,15 +104,16 @@ This README provides a step-by-step guide for setting up AWS Lambda functions, A
    - **Permissions**: Choose the existing role you created earlier for Lambda.
 
 4. **Add Function Code**:
-   - Write the logic code for the Lambda function to create a task in DynamoDB. Here’s a simple [Example](./Lambda%20functions/CreateTask.js).
+   - Write the logic code for the Lambda function to create, updating, deleting, and retrieving tasks in DynamoDB.<p>
+   - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js).
+   - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js).
+   - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js).
+   - [GetTask Lambda function](./Lambda%20functions/GetTask.js).
 
-5. **Repeat for Other Functions**:
-   - Create additional Lambda functions for updating, deleting, and retrieving tasks:
-     - `UpdateTask`
-     - `DeleteTask`
-     - `GetTask`
 
-## Step 5: Create an API Gateway
+## Set Up API Gateway
+
+-  **Create an API Gateway**
 
 1. **Go to the API Gateway Console**:
    - Access the AWS Management Console and navigate to the API Gateway service.
@@ -134,7 +132,7 @@ This README provides a step-by-step guide for setting up AWS Lambda functions, A
 5. **Deploy the API**:
    - Click on "Deploy API" and create a new stage (e.g., `dev`).
 
-## Step 6: Set Up Amazon Cognito
+## Set Up Amazon Cognito
 
 1. **Go to the Cognito Console**:
    - Access the AWS Management Console and navigate to the Cognito service.
@@ -150,5 +148,10 @@ This README provides a step-by-step guide for setting up AWS Lambda functions, A
    - Create an app client (e.g., `TaskLinkerApp`) and configure settings.
    - Note the App client ID and User Pool ID for later use.
 
-## Conclusion of Phase 1
-By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.  
+## Conclusion
+>  By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.
+
+
+
+## Frontend Application
+The frontend application will be the user interface built using a framework like React, Angular, or Vue.js. It will interact with the backend via RESTful APIs.
