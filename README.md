@@ -87,3 +87,68 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
   - Permissions: Choose the existing role you created earlier for Lambda.
 - **Add Function Code**: Write the logic code for the Lambda function.
 to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/CreateTask.js)
+
+# AWS Services for Project Management and Issue Tracking
+
+## Introduction
+This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, and Amazon Cognito for a project management and issue tracking application.
+
+## Set Up AWS Lambda
+
+1. **Go to the Lambda Console**:
+   - Access the AWS Management Console and navigate to the Lambda service.
+
+2. **Click on "Create function."**:
+   - Select the option to create a new function.
+
+3. **Configure Lambda Function**:
+   - **Function name**: `CreateTask`
+   - **Runtime**: Choose either Node.js or Python, depending on your preference.
+   - **Permissions**: Choose the existing role you created earlier for Lambda.
+
+4. **Add Function Code**:
+   - Write the logic code for the Lambda function to create a task in DynamoDB. Here’s a simple [Example](./Lambda%20functions/CreateTask.js).
+
+5. **Repeat for Other Functions**:
+   - Create additional Lambda functions for updating, deleting, and retrieving tasks:
+     - `UpdateTask`
+     - `DeleteTask`
+     - `GetTask`
+
+## Step 5: Create an API Gateway
+
+1. **Go to the API Gateway Console**:
+   - Access the AWS Management Console and navigate to the API Gateway service.
+
+2. **Choose "Create API" and select REST API**:
+   - Follow the prompts to create a new REST API.
+
+3. **Configure API Settings**:
+   - **API name**: `TaskManagementAPI`
+   - Click "Create API."
+
+4. **Create Resources and Methods**:
+   - Create resources for each functionality (e.g., `/tasks`).
+   - For each resource, create methods (GET, POST, PUT, DELETE) and link them to the corresponding Lambda functions.
+
+5. **Deploy the API**:
+   - Click on "Deploy API" and create a new stage (e.g., `dev`).
+
+## Step 6: Set Up Amazon Cognito
+
+1. **Go to the Cognito Console**:
+   - Access the AWS Management Console and navigate to the Cognito service.
+
+2. **Choose "Manage User Pools" and click "Create a user pool."**:
+   - Follow the prompts to create a new user pool.
+
+3. **Configure User Pool**:
+   - **User pool name**: `TaskLinkerUserPool`
+   - Configure attributes (e.g., email, password) based on your needs.
+
+4. **Set Up App Client**:
+   - Create an app client (e.g., `TaskLinkerApp`) and configure settings.
+   - Note the App client ID and User Pool ID for later use.
+
+## Conclusion of Phase 1
+By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.  
