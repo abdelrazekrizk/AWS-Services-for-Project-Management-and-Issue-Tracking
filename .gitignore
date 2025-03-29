@@ -5,8 +5,14 @@ tmp/*
 # User-specific files
 temp/*
 
-# drawio.io Backup files
+# Drawio files
+Architecture Diagram/*.drawio
+*.drawio
+# Drawio Backup files
 *.drawio.bkp
+Architecture Diagram/*.drawio.bkp
+
+
 
 ##
 # Prerequisites
