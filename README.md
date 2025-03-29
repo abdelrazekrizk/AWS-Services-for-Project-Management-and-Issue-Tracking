@@ -94,11 +94,14 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    - Write the logic code for the Lambda function to create, updating, deleting, and retrieving tasks in DynamoDB.<p>
    Here’s a simple Example!
 
-   - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js).
-   - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js).
-   - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js).
-   - [GetTask Lambda function](./Lambda%20functions/GetTask.js).
-
+   - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js).<p>
+This function will handle the creation of a new task in your DynamoDB table.
+   - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js).<p>
+This function updates an existing task in the DynamoDB table.
+   - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js).<p>
+This function deletes a task from the DynamoDB table.
+   - [GetTask Lambda function](./Lambda%20functions/GetTask.js).<p>
+This function retrieves a specific task from the DynamoDB table.
 
 ### Set Up API Gateway
 
@@ -116,7 +119,13 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 4. **Create Resources and Methods**:
    - Create resources for each functionality (e.g., `/tasks`).
-   - For each resource, create methods (GET, POST, PUT, DELETE) and link them to the corresponding Lambda functions.
+   - For each resource, create methods (GET, POST, PUT, DELETE) and link them to the corresponding Lambda functions.<p>
+   For example:
+
+POST /tasks/update for updating tasks (linked to UpdateTask).<p>
+DELETE /tasks/{UserId}/{TaskId} for deleting tasks (linked to DeleteTask).<p>
+GET /tasks/{UserId}/{TaskId} for retrieving tasks (linked to GetTask).<p>
+
 
 5. **Deploy the API**:
    - Click on "Deploy API" and create a new stage (e.g., `dev`).
