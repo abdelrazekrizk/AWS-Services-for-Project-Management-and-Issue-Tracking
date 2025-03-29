@@ -23,6 +23,7 @@ Create a scalable project management and issue tracking application using AWS se
 
 
 **AWS Services**
+
 leverage the following AWS services to build a robust project management and issue tracking system:
 
 - **Amazon DynamoDB**: Use it as your primary database to store tasks, user stories, and project information. Its flexible schema allows you to adapt as your needs change.
@@ -49,10 +50,10 @@ leverage the following AWS services to build a robust project management and iss
    - Create a Cognito User Pool for managing user sign-ups and logins.
 
 
-#### Create an AWS Account
+### Create an AWS Account
 If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/signup/) and create a new account.
 
-#### Set Up IAM Roles and Policies
+### Set Up IAM Roles and Policies
 - **Create IAM Users**:
   - Go to the IAM console.
   - Create IAM users for your development team with appropriate permissions (e.g., full access to DynamoDB, Lambda, and API Gateway).
@@ -66,7 +67,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
       - `AmazonS3FullAccess`
       - `AWSLambdaBasicExecutionRole` (for logging to CloudWatch)
 
-#### Create a DynamoDB Table
+### Create a DynamoDB Table
 - Go to the DynamoDB Console.
 - Click on "Create table."
 - Configure Table Settings:
@@ -76,18 +77,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
     - Sort key: `TaskId` (String)
   - Click "Create" to finish the table setup.
 
-#### Set Up AWS Lambda
-- Go to the Lambda Console.
-- Click on "Create function."
-- Configure Lambda Function:
-  - Function name: `CreateTask`
-  - Runtime: Choose Node.js or Python (depending on your preference).
-  - Permissions: Choose the existing role you created earlier for Lambda.
-- **Add Function Code**: Write the logic code for the Lambda function.
-to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/CreateTask.js)
-
-
-## Set Up AWS Lambda
+### Set Up AWS Lambda
 
 1. **Go to the Lambda Console**:
    - Access the AWS Management Console and navigate to the Lambda service.
@@ -102,13 +92,15 @@ to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/
 
 4. **Add Function Code**:
    - Write the logic code for the Lambda function to create, updating, deleting, and retrieving tasks in DynamoDB.<p>
+   Here’s a simple Example!
+
    - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js).
    - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js).
    - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js).
    - [GetTask Lambda function](./Lambda%20functions/GetTask.js).
 
 
-## Set Up API Gateway
+### Set Up API Gateway
 
 -  **Create an API Gateway**
 
@@ -129,7 +121,7 @@ to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/
 5. **Deploy the API**:
    - Click on "Deploy API" and create a new stage (e.g., `dev`).
 
-## Set Up Amazon Cognito
+### Set Up Amazon Cognito
 
 1. **Go to the Cognito Console**:
    - Access the AWS Management Console and navigate to the Cognito service.
@@ -145,9 +137,8 @@ to create a task in DynamoDB. Here’s a simple. [Example](./Lambda%20functions/
    - Create an app client (e.g., `TaskLinkerApp`) and configure settings.
    - Note the App client ID and User Pool ID for later use.
 
-## Conclusion
+### Conclusion
 >  By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.
-
 
 
 ## Frontend Application
