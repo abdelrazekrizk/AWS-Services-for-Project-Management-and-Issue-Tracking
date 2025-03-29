@@ -22,7 +22,7 @@ Create a scalable project management and issue tracking application using AWS se
 ![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.drawio.png)
 
 
-**AWS Services**
+## AWS Services
 
 leverage the following AWS services to build a robust project management and issue tracking system:
 
