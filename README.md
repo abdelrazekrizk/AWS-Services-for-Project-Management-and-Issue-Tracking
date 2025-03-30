@@ -6,12 +6,15 @@
 - [Features](#features)
 - [AWS Services](#aws-services)
 - [Set Up the Basic Infrastructure](#set-up-the-basic-infrastructure)
-- [Create an AWS Account](#create-an-aws-account)
-- [Set Up AWS Lambda](#set-up-aws-lambda)
-- [Set Up IAM Roles and Policies](#set-up-iam-roles-and-policies)
-- [Create a DynamoDB Table](#create-a-dynamodb-table)
-- [Set Up Amazon Cognito](#set-up-amazon-cognito)
-- [Set Up API Gateway](#set-up-api-gateway)
+- [Step 1: Create an AWS Account](#step-1-create-an-aws-account)
+- [Step 2: Create Amazon S3 Bucket](#step-2-create-amazon-s3-bucket)
+- [Step 3: Set Up AWS Lambda](#step-3-set-up-aws-lambda)
+- [Step 4: Set Up IAM Roles and Policies](#step-4-set-up-iam-roles-and-policies)
+- [Step 5: Create a DynamoDB Table](#step-5-create-a-dynamodb-table)
+- [Step 6: Set Up Amazon Cognito](#step-6-set-up-amazon-cognito)
+- [Step 7: Set Up API Gateway](#step-7-set-up-api-gateway)
+- [Step 8: Create Amazon SNS Topic](#step-8-create-amazon-sns-topic)
+- [Step 9: Monitor Application with Amazon CloudWatch](#step-9-monitor-application-with-amazon-cloudwatch)
 - [Summary](#summary)
 - [Next Steps](#next-steps)
 
@@ -34,7 +37,6 @@ Create a scalable project management and issue tracking application using AWS se
 
 ![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.png)
 
-## AWS Services
 
 ## AWS Services
 Leverage the following AWS services to build a robust project management and issue tracking system:
@@ -60,10 +62,28 @@ Leverage the following AWS services to build a robust project management and iss
 6. **Set Up Amazon Cognito (for user authentication)**:
    - Create a Cognito User Pool for managing user sign-ups and logins.
 
-## Create an AWS Account
+## Step 1: Create an AWS Account
 If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/signup/) and create a new account.
 
-## Set Up AWS Lambda
+## Step 2: Create Amazon S3 Bucket
+
+1. **Log in to AWS Management Console**:
+   - Navigate to the [AWS Management Console](https://aws.amazon.com/console/).
+
+2. **Access S3 Service**:
+   - In the AWS Management Console, search for **S3** and select **S3** from the services dropdown.
+
+3. **Create a New Bucket**:
+   - Click on the **Create bucket** button.
+   - **Configure Bucket Settings**:
+     - **Bucket name**: Enter a unique name for your bucket (e.g., `my-project-management-bucket`).
+     - **Region**: Select the AWS region where you want to create the bucket.
+   - Click on **Create bucket** at the bottom of the page.
+
+4. **Configure Bucket Permissions** (Optional):
+   - After creating the bucket, you can set permissions as needed, such as allowing public access or restricting access to specific IAM roles.
+
+## Step 3: Set Up AWS Lambda
 1. **Go to the Lambda Console**:
    - Access the AWS Management Console and navigate to the Lambda service.
 2. **Click on "Create function."**:
@@ -83,7 +103,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    - After AWS Lambda is set up, you will find that there is a Lambda role in the permission section under the configuration section: `AWSLambdaBasicExecutionRole`.
    - Click on it; it will take you to the IAM console as we will set up IAM inline policy for DynamoDB and S3 later.
 
-## Set Up IAM Roles and Policies
+## Step 4: Set Up IAM Roles and Policies
 - **Create IAM Users**:
   - Go to the IAM console.
   - Create IAM users for your development team with appropriate permissions (e.g., full access to DynamoDB, Lambda, and API Gateway).
@@ -95,9 +115,10 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
       - `AmazonS3FullAccess`
     - You can customize the policy to include the target `DynamoDB Table` and `S3 bucket` by using IAM Inline policy.
 
-## Create a DynamoDB Table
-- Go to the DynamoDB Console.
-- Click on "Create table."
+## Step 5: Create a DynamoDB Table
+- **Go to the DynamoDB Console**:
+  - Access the AWS Management Console and navigate to the DynamoDB service.
+  - Click on "Create table."
 - Configure Table Settings:
   - Table name: `Tasks`
   - Primary key:
@@ -108,8 +129,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 **Note**:
 - Write down the Amazon Resource Name (ARN) of the table; you will need it to create IAM inline policy.
 
-
-## Set Up Amazon Cognito
+## Step 6: Set Up Amazon Cognito
 1. **Go to the Cognito Console**:
  - Access the AWS Management Console and navigate to the Cognito service.
 2. **Choose "Manage User Pools" and click "Create a user pool."**:
@@ -121,7 +141,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
  - Create an app client (e.g., `TaskLinkerApp`) and configure settings.
  - Note the App client ID and User Pool ID for later use.
 
-## Set Up API Gateway
+## Step 7: Set Up API Gateway
 1. **Go to the API Gateway Console**:
  - Access the AWS Management Console and navigate to the API Gateway service.
 2. **Choose "Create API" and select REST API**:
@@ -139,8 +159,42 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 5. **Deploy the API**:
  - Click on "Deploy API" and create a new stage (e.g., `dev`).
 
+ ## Step 8: Create Amazon SNS Topic
+
+1. **Access SNS Service**:
+   - In the AWS Management Console, search for **SNS** and select **Simple Notification Service**.
+
+2. **Create a New Topic**:
+   - Click on the **Topics** link in the left navigation pane.
+   - Click on the **Create topic** button.
+   - **Select Type**: Choose either **Standard** or **FIFO** based on your requirements.
+   - **Configure Topic Settings**:
+     - **Name**: Enter a name for your topic (e.g., `TaskUpdatesTopic`).
+   - Click on **Create topic**.
+
+3. **Subscribe to the Topic**:
+   - After creating the topic, you can add subscriptions to it:
+     - Click on the topic name you just created.
+     - In the **Subscriptions** section, click on **Create subscription**.
+     - Choose the protocol (e.g., Email, SMS, etc.) and enter the endpoint (e.g., an email address to receive notifications).
+   - Click on **Create subscription**.
+
+## Step 9: Monitor Application with Amazon CloudWatch
+
+1. **Access CloudWatch Service**:
+   - In the AWS Management Console, search for **CloudWatch** and select it from the services dropdown.
+
+2. **Create Alarms**:
+   - In the CloudWatch dashboard, click on **Alarms** in the left navigation pane.
+   - Click on **Create alarm**.
+   - **Select Metric**: Choose the metric you want to monitor (e.g., Lambda function invocations, S3 bucket size).
+   - Click on **Select metric** and configure the alarm settings:
+     - Define conditions (e.g., `Threshold type`, `Whenever this metric`).
+     - Specify actions (e.g., send a notification to the SNS topic if the alarm is triggered).
+   - Click on **Create alarm** to finish.
+
 ## Summary
-By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.
+By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, implementing Amazon Cognito for secure user authentication, set up Amazon S3 for storing documents, Amazon SNS for sending notifications, and Amazon CloudWatch for monitoring your application performance in your project management and issue tracking system.  .
 
 ## Next Steps
 Once you have set up and tested AWS Services, we can move on to the next phase, where we will focus on developing the frontend application.
