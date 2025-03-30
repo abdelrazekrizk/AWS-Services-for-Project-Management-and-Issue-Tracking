@@ -19,7 +19,7 @@ Create a scalable project management and issue tracking application using AWS se
 
 ## Architecture Components
 
-![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.drawio.png)
+![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.png)
 
 ## AWS Services
 
