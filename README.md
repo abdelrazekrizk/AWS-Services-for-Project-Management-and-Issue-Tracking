@@ -1,9 +1,11 @@
 # AWS Services for Project Management and Issue Tracking
 
 ## Introduction
+
 This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, and Amazon Cognito for a project management and issue tracking application.
 
 ## Objective
+
 Create a scalable project management and issue tracking application using AWS services, allowing users to create, update, and manage tasks efficiently while providing features such as user authentication, file storage, and notifications.
 
 ## Features
@@ -49,41 +51,48 @@ leverage the following AWS services to build a robust project management and iss
    - Create a Cognito User Pool for managing user sign-ups and logins.
 
 ## Create an AWS Account
+
 If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/signup/) and create a new account.
 
 ## Set Up AWS Lambda
 
 1. **Go to the Lambda Console**:
+
    - Access the AWS Management Console and navigate to the Lambda service.
 
 2. **Click on "Create function."**:
+
    - Select the option to create a new function.
 
 3. **Configure Lambda Function**:
+
    - **Function name**: `CreateTask`
    - **Runtime**: Choose either Node.js or Python, depending on your preference.
    - **Permissions**: Choose the existing role you created earlier for Lambda.
 
 4. **Add Function Code**:
+
    - Write the logic code for the Lambda function to create, updating, deleting, and retrieving tasks in DynamoDB.<p>
-   Here’s a simple Example!
+     Here’s a simple Example!
 
    - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js).<p>
-This function will handle the creation of a new task in your DynamoDB table.
+     This function will handle the creation of a new task in your DynamoDB table.
    - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js).<p>
-This function updates an existing task in the DynamoDB table.
+     This function updates an existing task in the DynamoDB table.
    - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js).<p>
-This function deletes a task from the DynamoDB table.
+     This function deletes a task from the DynamoDB table.
    - [GetTask Lambda function](./Lambda%20functions/GetTask.js).<p>
-This function retrieves a specific task from the DynamoDB table.
+     This function retrieves a specific task from the DynamoDB table.
 
- - **Note**:
-    - After AWS Lambda is set up you will found that there is lambada role in permision under configration section
-      - `AWSLambdaBasicExecutionRole`
-    - Click on it will talk you to IAM console as we will set up
+- **Note**:
+  - After AWS Lambda is set up you will found that there is lambada role in permision under configration section
+    - `AWSLambdaBasicExecutionRole`
+  - Click on it will take you to IAM console as we will set up IAM inline policy for DynamoDB and S3 later.
 
 ## Set Up IAM Roles and Policies
+
 - **Create IAM Users**:
+
   - Go to the IAM console.
   - Create IAM users for your development team with appropriate permissions (e.g., full access to DynamoDB, Lambda, and API Gateway).
 
@@ -93,9 +102,10 @@ This function retrieves a specific task from the DynamoDB table.
     - Example policies:
       - `AmazonDynamoDBFullAccess`
       - `AmazonS3FullAccess`
- -  you can custmize policy to include target `DynamoDB Table` and `S3 bucket`
+- you can custmize policy to include target `DynamoDB Table` and `S3 bucket` by using IAM Inline policy.
 
 ## Create a DynamoDB Table
+
 - Go to the DynamoDB Console.
 - Click on "Create table."
 - Configure Table Settings:
@@ -104,28 +114,36 @@ This function retrieves a specific task from the DynamoDB table.
     - Partition key: `UserId` (String)
     - Sort key: `TaskId` (String)
   - Click "Create" to finish the table setup.
+- `Note`:
+- Write down Amazon Resource Name (ARN) table you will need it to Crate IAM inline policy.
 
+  `arn:aws:dynamodb:<Region>:<Account-ID>:table/Tasks`
 
 ## Set Up API Gateway
 
--  **Create an API Gateway**
+- **Create an API Gateway**
 
 1. **Go to the API Gateway Console**:
+
    - Access the AWS Management Console and navigate to the API Gateway service.
 
 2. **Choose "Create API" and select REST API**:
+
    - Follow the prompts to create a new REST API.
 
 3. **Configure API Settings**:
+
    - **API name**: `TaskManagementAPI`
    - Click "Create API."
 
 4. **Create Resources and Methods**:
+
    - Create resources for each functionality (e.g., `/tasks`).
    - For each resource, create methods (GET, POST, PUT, DELETE) and link them to the corresponding Lambda functions.<p>
-   For example:
+     For example:
 
    **Create API Gateway Endpoints for Each Function**:
+
    - **POST /tasks/update**: For updating tasks (linked to `UpdateTask`).
    - **DELETE /tasks/{UserId}/{TaskId}**: For deleting tasks (linked to `DeleteTask`).
    - **GET /tasks/{UserId}/{TaskId}**: For retrieving tasks (linked to `GetTask`).
@@ -136,12 +154,15 @@ This function retrieves a specific task from the DynamoDB table.
 ## Set Up Amazon Cognito
 
 1. **Go to the Cognito Console**:
+
    - Access the AWS Management Console and navigate to the Cognito service.
 
 2. **Choose "Manage User Pools" and click "Create a user pool."**:
+
    - Follow the prompts to create a new user pool.
 
 3. **Configure User Pool**:
+
    - **User pool name**: `TaskLinkerUserPool`
    - Configure attributes (e.g., email, password) based on your needs.
 
@@ -150,7 +171,8 @@ This function retrieves a specific task from the DynamoDB table.
    - Note the App client ID and User Pool ID for later use.
 
 ### Summary
->  By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.
+
+> By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, and implementing Amazon Cognito for secure user authentication.
 
 ### Next Steps
 
