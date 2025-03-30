@@ -2,7 +2,7 @@
 
 The architecture is divided into several tiers, each with a specific role in the overall functionality of the application.
 
-![Architecture Diagram](./AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.drawio.png)
+![Architecture Diagram](./AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.png)
 
 ## Summary of Process Flow
 
@@ -58,4 +58,3 @@ The architecture is divided into several tiers, each with a specific role in the
 3. The API Gateway routes this request to the Task Update Lambda function.
 4. The Lambda function retrieves the current task from DynamoDB, applies the updates, and writes the updated task back to DynamoDB.
 5. The Lambda function may publish a notification to SNS to inform users about the task update.
-
