@@ -1,33 +1,38 @@
 # API Gateway Setup for Lambda Functions
 
-## Overview
+## Table of Contents
+- [Overview](#overview)
+- [Step 1: Create an API Gateway](#step-1-create-an-api-gateway)
+- [Step 2: Define Resources and Methods](#step-2-define-resources-and-methods)
+- [Step 3: Deploy the API](#step-3-deploy-the-api)
+- [Step 4: Test the API Endpoints](#step-4-test-the-api-endpoints)
+- [Summary](#summary)
 
+## Overview
 Create an API Gateway to expose your Lambda functions as RESTful APIs. You will define resources and methods for each function (Create, Update, Delete, Get), deploy the API, and test the endpoints to ensure they work as expected.
 
 ---
-### Step 1: Create an API Gateway
 
+## Step 1: Create an API Gateway
 1. **Go to the API Gateway Console**:
    - Open the AWS Management Console and navigate to the API Gateway service.
-
 2. **Create a New API**:
    - Choose **Create API**.
-   - Select **REST API** (not private) and click **Build**.
-
+   - Select **REST API** `Regional` (not private) and click **Build**.
 3. **Configure API Settings**:
    - **API name**: `TaskManagementAPI`
    - **Description**: A simple API for task management.
    - Leave other settings as default and click **Create API**.
----
-### Step 2: Define Resources and Methods
 
+---
+
+## Step 2: Define Resources and Methods
 1. **Create Resource for Tasks**:
    - Click on **Resources** in the left navigation pane.
    - Click on **Actions** and select **Create Resource**.
      - **Resource Name**: `tasks`
      - **Resource Path**: `/tasks`
    - Click **Create Resource**.
-
 2. **Create Methods**:
    - Select the `/tasks` resource and click on **Actions**, then select **Create Method**.
 
@@ -61,19 +66,20 @@ Create an API Gateway to expose your Lambda functions as RESTful APIs. You will 
        - **Name**: `UserId` (Required)
        - **Name**: `TaskId` (Required)
      - Repeat the same for the **DELETE** method.
----
-### Step 3: Deploy the API
 
+---
+
+## Step 3: Deploy the API
 1. **Deploy the API**:
    - Click on **Actions** and select **Deploy API**.
    - **Deployment stage**: Create a new stage (e.g., `dev`).
    - Click **Deploy**.
-
 2. **Copy the Invoke URL**:
    - After deployment, you will see the Invoke URL for the API. This URL will be used to access the API endpoints.
----
-### Step 4: Test the API Endpoints
 
+---
+
+## Step 4: Test the API Endpoints
 You can use tools like Postman, cURL, or even your browser to test the API endpoints and ensure they work as expected.
 
 1. **Test Create Task**:
@@ -111,6 +117,7 @@ You can use tools like Postman, cURL, or even your browser to test the API endpo
    - **Endpoint**: `GET {Invoke URL}/tasks/user123/task001`
 
 ---
+
 ## Summary
 At the end, you should have:
 - An API Gateway set up with resources and methods for managing tasks.
