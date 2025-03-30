@@ -74,10 +74,10 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    - **Permissions**: Choose the existing role you created earlier for Lambda.
 4. **Add Function Code**:
    - Write the logic code for the Lambda function to create, update, delete, and retrieve tasks in DynamoDB. Here’s a simple example:
-     - [CreateTask Lambda function](./Lambda%20functions/CreateTask.js): This function will handle the creation of a new task in your DynamoDB table.
-     - [UpdateTask Lambda function](./Lambda%20functions/UpdateTask.js): This function updates an existing task in the DynamoDB table.
-     - [DeleteTask Lambda function](./Lambda%20functions/DeleteTask.js): This function deletes a task from the DynamoDB table.
-     - [GetTask Lambda function](./Lambda%20functions/GetTask.js): This function retrieves a specific task from the DynamoDB table.
+     - [CreateTask Lambda function](./Lambda%20Functions/CreateTask.js): This function will handle the creation of a new task in your DynamoDB table.
+     - [UpdateTask Lambda function](./Lambda%20Functions/UpdateTask.js): This function updates an existing task in the DynamoDB table.
+     - [DeleteTask Lambda function](./Lambda%20Functions/DeleteTask.js): This function deletes a task from the DynamoDB table.
+     - [GetTask Lambda function](./Lambda%20Functions/GetTask.js): This function retrieves a specific task from the DynamoDB table.
 
    **Note**:
    - After AWS Lambda is set up, you will find that there is a Lambda role in the permission section under the configuration section: `AWSLambdaBasicExecutionRole`.
