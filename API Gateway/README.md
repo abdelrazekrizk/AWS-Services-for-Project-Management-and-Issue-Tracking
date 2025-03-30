@@ -3,6 +3,7 @@
 ## Overview
 
 Create an API Gateway to expose your Lambda functions as RESTful APIs. You will define resources and methods for each function (Create, Update, Delete, Get), deploy the API, and test the endpoints to ensure they work as expected.
+
 ---
 ### Step 1: Create an API Gateway
 
