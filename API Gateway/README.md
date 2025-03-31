@@ -62,7 +62,8 @@ Create an API Gateway to expose your Lambda functions as RESTful APIs. You will 
 
 3. **Set Up Path Parameters for GET and DELETE**:
    - For the **GET** and **DELETE** methods, you need to set up path parameters:
-     - Select the **GET** method, click on **Method Request**, and add path parameters:
+     - Select the **GET** method, click on **Method Request**, and click `Edit`
+     then add path parameters in the `URL query string parameters`:
        - **Name**: `UserId` (Required)
        - **Name**: `TaskId` (Required)
      - Repeat the same for the **DELETE** method.
@@ -125,3 +126,5 @@ At the end, you should have:
 - Successfully tested the API endpoints to ensure they are functioning correctly.
 
 ---
+## Resource
+Amazon API Gateway Documentation [Go There](https://docs.aws.amazon.com/apigateway/)
