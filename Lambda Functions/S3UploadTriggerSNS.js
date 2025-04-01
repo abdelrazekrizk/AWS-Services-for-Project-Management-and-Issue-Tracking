@@ -9,6 +9,11 @@ const snsClient = new SNSClient({ region: "us-east-1" }); // Replace with your d
 export const handler = async (event: S3Event) => {
     const topicArn = "arn:aws:sns:us-east-1:YOUR_ACCOUNT_ID:YOUR_TOPIC_NAME"; // Replace with your SNS Topic ARN
 
+    // Specify the S3 bucket and object key to monitor
+    // Note: This is just an example; in a real scenario, you would get these from the event
+    const bucketName = "my-specific-bucket"; // Replace with your S3 bucket name
+    const objectKey = "my-specific-object"; // Replace with your S3 object key
+
     // Iterate through each record in the event
     for (const record of event.Records) {
         const bucketName = record.s3.bucket.name;
