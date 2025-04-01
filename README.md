@@ -17,7 +17,9 @@
 - [Step 9: Monitor Application with Amazon CloudWatch](#step-9-monitor-application-with-amazon-cloudwatch)
 - [Summary](#summary)
 - [Next Steps](#next-steps)
+- [Recource](#recource)
 
+---
 ## Introduction
 This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, Amazon Cognito,Amazon DynamoDB, Amazon S3, Amazon SNS Service, and Amazon CloudWatch for a project management and issue tracking application.
 
@@ -258,6 +260,10 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, implementing Amazon Cognito for secure user authentication, set up Amazon S3 for storing documents, Amazon SNS for sending notifications, and Amazon CloudWatch for monitoring your application performance in your project management and issue tracking system.
 
 ---
+## Next Steps
+Once you have set up and tested AWS Services, we can move on to the next phase, where we will focus on developing the frontend application.
+
+---
 ## Recource
 - AWS Identity and Access Management Documentation [`Go Here`](https://docs.aws.amazon.com/iam/)
 -  Amazon Simple Storage Service Documentation [`Go Here`](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
@@ -267,7 +273,3 @@ By completing these steps, you will have successfully set up the initial infrast
 -  Amazon Cognito Documentation [`Go Here`](https://docs.aws.amazon.com/cognito/)
 -  Amazon Simple Notification Service Documentation [`Go Here`](https://docs.aws.amazon.com/sns/)
 - Amazon CloudWatch Documentation [`Go Here`](https://docs.aws.amazon.com/cloudwatch/)
-
----
-## Next Steps
-Once you have set up and tested AWS Services, we can move on to the next phase, where we will focus on developing the frontend application.
