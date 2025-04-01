@@ -33,11 +33,12 @@ Create a scalable project management and issue tracking application using AWS se
 - **Status Tracking**: Monitor the status of tasks (e.g., To Do, In Progress, Done).
 - **Reporting**: Generate reports on task progress, time spent, and team performance.
 - **Notifications**: Send alerts for task updates, deadlines, and comments.
+---
 ## Architecture Components
 
 ![Architecture Diagram](./Architecture%20Diagram/AWS%20Services%20for%20Project%20Management%20and%20Issue%20Tracking.png)
 
-
+---
 ## AWS Services
 Leverage the following AWS services to build a robust project management and issue tracking system:
 - **Amazon DynamoDB**: Use it as your primary database to store tasks, user stories, and project information. Its flexible schema allows you to adapt as your needs change.
@@ -48,6 +49,7 @@ Leverage the following AWS services to build a robust project management and iss
 - **Amazon SNS**: Use Simple Notification Service (SNS) for sending notifications about task updates, deadlines, or comments.
 - **Amazon CloudWatch**: Monitor application performance and set up alarms for any issues that arise.
 
+---
 ## Set Up the Basic Infrastructure
 1. **Create an AWS Account** (if you don't already have one).
 2. **Create Amazon S3 Bucket**:
@@ -66,12 +68,13 @@ Leverage the following AWS services to build a robust project management and iss
 8. **Create Amazon SNS Service**:
    - Set up an Amazon SNS topic for sending notifications about task updates, deadlines, or comments.
 
-
+---
 ## Step 1: Create an AWS Account
 If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/signup/) and create a new account.
 
 > Follow the Official Setting up your AWS account [`Go Here`](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started-account-iam.html)
 
+---
 ## Step 2: Create Amazon S3 Bucket
 
 1. **Log in to AWS Management Console**:
@@ -92,6 +95,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 > Follow the Official Create an Amazon S3 bucket [`Go Here`](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
 
+---
 ## Step 3: Create a DynamoDB Table
 - **Go to the DynamoDB Console**:
   - Access the AWS Management Console and navigate to the DynamoDB service.
@@ -107,6 +111,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 - Write down the Amazon Resource Name (ARN) of the table; you will need it to create IAM inline policy.
 
 > Follow the Official Create a DynamoDB table [`Go Here`](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/getting-started-step-1.html)
+---
 
 ## Step 4: Set Up IAM Roles and Policies
 - **Create IAM Users**:
@@ -121,6 +126,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
     - You can customize the policy to include the target `DynamoDB Table` and `S3 bucket` by using IAM Inline policy.
 
 > Follow the Official IAM tutorial: Create and attach your first customer managed policy [`Go Here`](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_managed-policies.html)
+---
 
 ## Step 5: Set Up AWS Lambda
 1. **Go to the Lambda Console**:
@@ -143,6 +149,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    - Click on it; it will take you to the IAM console as we will set up IAM inline policy for DynamoDB and S3 later.
 
 > Follow the Official Create your first Lambda function [`Go Here`](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
+---
 
 ## Step 6: Set Up Amazon Cognito
 1. **Go to the Cognito Console**:
@@ -158,6 +165,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 > Follow the Official Create a new application in the Amazon Cognito console [`Go Here`](https://docs.aws.amazon.com/cognito/latest/developerguide/getting-started-user-pools-application.html)
 
+---
 ## Step 7: Set Up API Gateway
 1. **Go to the API Gateway Console**:
  - Access the AWS Management Console and navigate to the API Gateway service.
@@ -178,6 +186,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 > Follow the Official Create an API Gateway REST APIs [`Go Here`](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html)
 
+---
  ## Step 8: Create Amazon SNS Service
 
 ### Create a Standard SNS Topic
@@ -227,6 +236,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 > Follow the Official Create an Amazon SNS topic and publish messages [`Go Here`](https://docs.aws.amazon.com/sns/latest/dg/sns-setting-up.html)
 
+---
 ## Step 9: Monitor Application with Amazon CloudWatch
 
 1. **Access CloudWatch Service**:
@@ -243,9 +253,11 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
 > Follow the Official Create and view alarms in the CloudWatch Console [`Go Here`](https://docs.aws.amazon.com/sagemaker/latest/dg/manage-endpoints-console-alarms.html)
 
+---
 ## Summary
 By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, implementing Amazon Cognito for secure user authentication, set up Amazon S3 for storing documents, Amazon SNS for sending notifications, and Amazon CloudWatch for monitoring your application performance in your project management and issue tracking system.
 
+---
 ## Recource
 - AWS Identity and Access Management Documentation [`Go Here`](https://docs.aws.amazon.com/iam/)
 -  Amazon Simple Storage Service Documentation [`Go Here`](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
@@ -256,6 +268,6 @@ By completing these steps, you will have successfully set up the initial infrast
 -  Amazon Simple Notification Service Documentation [`Go Here`](https://docs.aws.amazon.com/sns/)
 - Amazon CloudWatch Documentation [`Go Here`](https://docs.aws.amazon.com/cloudwatch/)
 
-
+---
 ## Next Steps
 Once you have set up and tested AWS Services, we can move on to the next phase, where we will focus on developing the frontend application.
