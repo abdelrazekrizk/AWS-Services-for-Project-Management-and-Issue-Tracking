@@ -90,7 +90,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 4. **Configure Bucket Permissions** (Optional):
    - After creating the bucket, you can set permissions as needed, such as allowing public access or restricting access to specific IAM roles.
 
-> Follow the Official Create an Amazon S3 bucket [`Go Here`] (https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+> Follow the Official Create an Amazon S3 bucket [`Go Here`](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
 
 ## Step 3: Create a DynamoDB Table
 - **Go to the DynamoDB Console**:
