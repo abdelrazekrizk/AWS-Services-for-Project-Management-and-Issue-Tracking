@@ -8,18 +8,18 @@
 - [Set Up the Basic Infrastructure](#set-up-the-basic-infrastructure)
 - [Step 1: Create an AWS Account](#step-1-create-an-aws-account)
 - [Step 2: Create Amazon S3 Bucket](#step-2-create-amazon-s3-bucket)
-- [Step 3: Set Up AWS Lambda](#step-3-set-up-aws-lambda)
+- [Step 3: Create a DynamoDB Table](#step-3-create-a-dynamodb-table)
 - [Step 4: Set Up IAM Roles and Policies](#step-4-set-up-iam-roles-and-policies)
-- [Step 5: Create a DynamoDB Table](#step-5-create-a-dynamodb-table)
+- [Step 5: Set Up AWS Lambda](#step-5-set-up-aws-lambda)
 - [Step 6: Set Up Amazon Cognito](#step-6-set-up-amazon-cognito)
 - [Step 7: Set Up API Gateway](#step-7-set-up-api-gateway)
-- [Step 8: Create Amazon SNS Topic](#step-8-create-amazon-sns-topic)
+- [Step 8: Step 8: Create Amazon SNS Service](#step-8-create-amazon-sns-service)
 - [Step 9: Monitor Application with Amazon CloudWatch](#step-9-monitor-application-with-amazon-cloudwatch)
 - [Summary](#summary)
 - [Next Steps](#next-steps)
 
 ## Introduction
-This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, and Amazon Cognito for a project management and issue tracking application.
+This README provides a step-by-step guide for setting up AWS Lambda functions, API Gateway, Amazon Cognito,Amazon DynamoDB, Amazon S3, Amazon SNS Service, and Amazon CloudWatch for a project management and issue tracking application.
 
 ## Objective
 Create a scalable project management and issue tracking application using AWS services, allowing users to create, update, and manage tasks efficiently while providing features such as user authentication, file storage, and notifications.
@@ -50,17 +50,22 @@ Leverage the following AWS services to build a robust project management and iss
 
 ## Set Up the Basic Infrastructure
 1. **Create an AWS Account** (if you don't already have one).
-2. **Set Up IAM Roles and Policies**:
-   - Create IAM users with necessary permissions for accessing AWS services.
-   - Create IAM roles for Lambda functions with permissions to access DynamoDB, S3, and other required services.
+2. **Create Amazon S3 Bucket**:
+   - Set up an Amazon S3 bucket for storing attachments and documents related to tasks.
 3. **Create a DynamoDB Table**:
    - Set up a DynamoDB table for storing tasks and projects.
-4. **Set Up AWS Lambda**:
+4. **Set Up IAM Roles and Policies**:
+   - Create IAM users with necessary permissions for accessing AWS services.
+   - Create IAM roles for Lambda functions with permissions to access DynamoDB, S3, and other required services.
+5. **Set Up AWS Lambda**:
    - Create initial Lambda functions for task management (e.g., create, update, delete).
-5. **Create an API Gateway**:
-   - Set up an API Gateway to expose endpoints for the Lambda functions.
 6. **Set Up Amazon Cognito (for user authentication)**:
    - Create a Cognito User Pool for managing user sign-ups and logins.
+7. **Create an API Gateway**:
+   - Set up an API Gateway to expose endpoints for the Lambda functions.
+8. **Create Amazon SNS Service**:
+   - Set up an Amazon SNS topic for sending notifications about task updates, deadlines, or comments.
+
 
 ## Step 1: Create an AWS Account
 If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/signup/) and create a new account.
@@ -83,7 +88,33 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 4. **Configure Bucket Permissions** (Optional):
    - After creating the bucket, you can set permissions as needed, such as allowing public access or restricting access to specific IAM roles.
 
-## Step 3: Set Up AWS Lambda
+## Step 3: Create a DynamoDB Table
+- **Go to the DynamoDB Console**:
+  - Access the AWS Management Console and navigate to the DynamoDB service.
+  - Click on "Create table."
+- Configure Table Settings:
+  - Table name: `Tasks`
+  - Primary key:
+    - Partition key: `UserId` (String)
+    - Sort key: `TaskId` (String)
+  - Click "Create" to finish the table setup.
+
+**Note**:
+- Write down the Amazon Resource Name (ARN) of the table; you will need it to create IAM inline policy.
+
+## Step 4: Set Up IAM Roles and Policies
+- **Create IAM Users**:
+  - Go to the IAM console.
+  - Create IAM users for your development team with appropriate permissions (e.g., full access to DynamoDB, Lambda, and API Gateway).
+- **Create IAM policy for Lambda**:
+  - In the IAM console, within the automated role that was generated when creating Lambda.
+  - Attach policies that allow access to DynamoDB and S3.
+    - Example policies:
+      - `AmazonDynamoDBFullAccess`
+      - `AmazonS3FullAccess`
+    - You can customize the policy to include the target `DynamoDB Table` and `S3 bucket` by using IAM Inline policy.
+
+## Step 5: Set Up AWS Lambda
 1. **Go to the Lambda Console**:
    - Access the AWS Management Console and navigate to the Lambda service.
 2. **Click on "Create function."**:
@@ -102,32 +133,6 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    **Note**:
    - After AWS Lambda is set up, you will find that there is a Lambda role in the permission section under the configuration section: `AWSLambdaBasicExecutionRole`.
    - Click on it; it will take you to the IAM console as we will set up IAM inline policy for DynamoDB and S3 later.
-
-## Step 4: Set Up IAM Roles and Policies
-- **Create IAM Users**:
-  - Go to the IAM console.
-  - Create IAM users for your development team with appropriate permissions (e.g., full access to DynamoDB, Lambda, and API Gateway).
-- **Create IAM policy for Lambda**:
-  - In the IAM console, within the automated role that was generated when creating Lambda.
-  - Attach policies that allow access to DynamoDB and S3.
-    - Example policies:
-      - `AmazonDynamoDBFullAccess`
-      - `AmazonS3FullAccess`
-    - You can customize the policy to include the target `DynamoDB Table` and `S3 bucket` by using IAM Inline policy.
-
-## Step 5: Create a DynamoDB Table
-- **Go to the DynamoDB Console**:
-  - Access the AWS Management Console and navigate to the DynamoDB service.
-  - Click on "Create table."
-- Configure Table Settings:
-  - Table name: `Tasks`
-  - Primary key:
-    - Partition key: `UserId` (String)
-    - Sort key: `TaskId` (String)
-  - Click "Create" to finish the table setup.
-
-**Note**:
-- Write down the Amazon Resource Name (ARN) of the table; you will need it to create IAM inline policy.
 
 ## Step 6: Set Up Amazon Cognito
 1. **Go to the Cognito Console**:
@@ -159,25 +164,52 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 5. **Deploy the API**:
  - Click on "Deploy API" and create a new stage (e.g., `dev`).
 
- ## Step 8: Create Amazon SNS Topic
+ ## Step 8: Create Amazon SNS Service
 
-1. **Access SNS Service**:
-   - In the AWS Management Console, search for **SNS** and select **Simple Notification Service**.
+### Create a Standard SNS Topic
+
+1. **Access the Amazon SNS Console**:
+   - Go to the [AWS Management Console](https://aws.amazon.com/console/).
+   - Search for and select **SNS** (Simple Notification Service).
 
 2. **Create a New Topic**:
-   - Click on the **Topics** link in the left navigation pane.
+   - In the left navigation pane, click on **Topics**.
    - Click on the **Create topic** button.
    - **Select Type**: Choose either **Standard** or **FIFO** based on your requirements.
+   - Select **Standard** as the topic type.
    - **Configure Topic Settings**:
      - **Name**: Enter a name for your topic (e.g., `TaskUpdatesTopic`).
+     - Optionally, you can provide a display name, which is used for SMS notifications.
    - Click on **Create topic**.
 
-3. **Subscribe to the Topic**:
-   - After creating the topic, you can add subscriptions to it:
-     - Click on the topic name you just created.
-     - In the **Subscriptions** section, click on **Create subscription**.
-     - Choose the protocol (e.g., Email, SMS, etc.) and enter the endpoint (e.g., an email address to receive notifications).
-   - Click on **Create subscription**.
+### Subscribe an Email Address to the Topic
+
+1. **Select Your Topic**:
+   - Click on the topic you just created (e.g., `TaskUpdatesTopic`).
+
+2. **Create Subscription**:
+   - In the **Subscriptions** section, click on **Create subscription**.
+   - Choose the protocol (e.g., Email, SMS, etc.) and enter the endpoint (e.g., an email address to receive notifications).
+   - **Protocol**: Choose **Email** from the dropdown menu.
+   - **Endpoint**: Enter the email address where you want to receive notifications (e.g., `your-email@example.com`).
+   - Click **Create subscription**.
+
+3. **Confirm Subscription**:
+   - An email will be sent to the address you provided. Open that email and click on the confirmation link to activate the subscription.
+   - If you don’t see the email, check your spam or junk folder.
+
+### Publish Messages to the SNS Topic
+
+1. **Publish a Test Message**:
+   - Go back to your SNS topic in the console.
+   - Click on the **Publish message** button.
+   - In the **Message details** section:
+     - **Subject**: Enter a subject for your notification (e.g., "Task Update Notification").
+     - **Message**: Write your message content (e.g., "A new task has been created or updated.").
+   - Click on **Publish message**.
+
+2. **Check Your Email**:
+   - After publishing the message, check the email address you subscribed to see if you received the notification.
 
 ## Step 9: Monitor Application with Amazon CloudWatch
 
