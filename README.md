@@ -166,6 +166,7 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 
  ## Step 8: Create Amazon SNS Service
 
+
 ### Create a Standard SNS Topic
 
 1. **Access the Amazon SNS Console**:
@@ -211,6 +212,8 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
 2. **Check Your Email**:
    - After publishing the message, check the email address you subscribed to see if you received the notification.
 
+> Follow the Official Create an Amazon SNS topic and publish messages [`Go Here`](https://docs.aws.amazon.com/sns/latest/dg/sns-setting-up.html)
+
 ## Step 9: Monitor Application with Amazon CloudWatch
 
 1. **Access CloudWatch Service**:
@@ -226,7 +229,9 @@ If you don't have an AWS account, go to [AWS Signup](https://aws.amazon.com/sign
    - Click on **Create alarm** to finish.
 
 ## Summary
-By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, implementing Amazon Cognito for secure user authentication, set up Amazon S3 for storing documents, Amazon SNS for sending notifications, and Amazon CloudWatch for monitoring your application performance in your project management and issue tracking system.  .
+By completing these steps, you will have successfully set up the initial infrastructure for your project management and issue tracking application using AWS services. This includes creating Lambda functions for task management, setting up an API Gateway for communication between the frontend and backend, implementing Amazon Cognito for secure user authentication, set up Amazon S3 for storing documents, Amazon SNS for sending notifications, and Amazon CloudWatch for monitoring your application performance in your project management and issue tracking system.
+
+Amazon Simple Notification Service Documentation [Go Here](https://docs.aws.amazon.com/sns/)
 
 ## Next Steps
 Once you have set up and tested AWS Services, we can move on to the next phase, where we will focus on developing the frontend application.
